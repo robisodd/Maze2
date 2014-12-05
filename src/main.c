@@ -92,8 +92,8 @@ static void draw_map(GContext *ctx, GRect box, int32_t zoom) {
   //1-pixel-per-square map:
   //for (int16_t x = 0; x < mapsize; x++) for (int16_t y = 0; y < mapsize; y++) {graphics_context_set_stroke_color(ctx, map[y*mapsize+x]>0?1:0); graphics_draw_pixel(ctx, GPoint(x, y));}
   uint32_t *ctx32 = ((uint32_t*)(((GBitmap*)ctx)->addr));
-  int32_t x,y, yaddr, xaddr, xbit;
-  int32_t xonmap, yonmap, yonmapinit;
+  uint32_t xbit;
+  int32_t x, y, yaddr, xaddr, xonmap, yonmap, yonmapinit;
 
   xonmap = ((player.x*zoom)>>6) - (box.size.w/2);  // Divide by ZOOM to get map X coord, but rounds [-ZOOM to 0] to 0 and plots it, so divide by ZOOM after checking if <0
   yonmapinit = ((player.y*zoom)>>6) - (box.size.h/2);
